@@ -61,7 +61,7 @@ export default class News extends Component {
     render() {
         return (
             <div className="container my-3">
-                <h2 className="my-4">NewsMonkey - Top Headlines</h2>
+                <h2 className="my-4">NewsMonkey - Top Headlines :- {this.props.category}</h2>
                 <div className="row">
                     {!this.state.loading && this.state.articles ? (
                         this.state.articles.map((e) => {
@@ -74,6 +74,7 @@ export default class News extends Component {
                                         }
                                         imageUrl={e.urlToImage ? e.urlToImage : DefaultImg}
                                         newsUrl={e.url}
+                                        date={e.publishedAt}
                                     />
                                 </div>
                             );
