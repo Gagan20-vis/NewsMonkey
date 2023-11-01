@@ -2,7 +2,17 @@ import { Component } from "react";
 import NewsItems from "./NewsItems";
 import DefaultImg from "../assets/defaultImage.png";
 import Spinner from "./Spinner";
+import PropTypes from 'prop-types'
+
 export default class News extends Component {
+    static defaultProps = {
+        country: 'in',
+        category: 'general'
+    }
+    static propTypes = {
+        country: PropTypes.string,
+        category: PropTypes.string
+    }
     constructor() {
         super();
         this.state = {
@@ -13,7 +23,7 @@ export default class News extends Component {
     }
     async componentDidMount() {
         let url =
-            "https://newsapi.org/v2/top-headlines?country=in&apiKey=8687cfd7e82a41aa8624239776464215&page=1";
+            `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=8687cfd7e82a41aa8624239776464215&page=1`;
         this.setState({ loading: true })
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -24,7 +34,7 @@ export default class News extends Component {
         });
     }
     handPrevClick = async () => {
-        let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=8687cfd7e82a41aa8624239776464215&page=${this.state.page - 1
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=8687cfd7e82a41aa8624239776464215&page=${this.state.page - 1
             }&pageSize=20`;
         this.state.loading = true;
         let data = await fetch(url);
@@ -36,7 +46,7 @@ export default class News extends Component {
         });
     };
     handNextClick = async () => {
-        let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=8687cfd7e82a41aa8624239776464215&page=${this.state.page + 1
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=8687cfd7e82a41aa8624239776464215&page=${this.state.page + 1
             }&pageSize=20`;
         this.state.loading = true;
         let data = await fetch(url);
