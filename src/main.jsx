@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import News from "./components/News";
-import './index.css'
 import {
   createBrowserRouter,
   RouterProvider
@@ -12,6 +11,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "/",
+        element: <News key="general" country="in" category="general" />
+      },
       {
         path: "/general",
         element: <News key="general" country="in" category="general" />
