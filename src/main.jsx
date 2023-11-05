@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
+const api = import.meta.env.VITE_REACT_APP_API_KEY;
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,35 +14,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <News key="general" country="in" category="general" />
+        element: <News api={api}  key="general" country="in" category="general" />
       },
       {
         path: "/general",
-        element: <News key="general" country="in" category="general" />
+        element: <News api={api}  key="general" country="in" category="general" />
       },
       {
         path: "/business",
-        element: <News key="business" country="in" category="business" />
+        element: <News api={api}  key="business" country="in" category="business" />
       },
       {
         path: "/entertainment",
-        element: <News key="entertainment" country="in" category="entertainment" />
+        element: <News api={api}  key="entertainment" country="in" category="entertainment" />
       },
       {
         path: "/health",
-        element: <News key="health" country="in" category="health" />
+        element: <News api={api}  key="health" country="in" category="health" />
       },
       {
         path: "/science",
-        element: <News key="science" country="in" category="science" />
+        element: <News api={api}  key="science" country="in" category="science" />
       },
       {
         path: "/sports",
-        element: <News key="sports" country="in" category="sports" />
+        element: <News api={api}  key="sports" country="in" category="sports" />
       },  
       {
         path: "/technology",
-        element: <News key="technology" country="in" category="technology" />
+        element: <News api={api}  key="technology" country="in" category="technology" />
       },
     ],
   },
